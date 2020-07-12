@@ -41,7 +41,24 @@ class ViewController: UIViewController, LoginButtonDelegate {
     }
     
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
-         <#code#>
+        
+        if error == nil
+        {
+            if result?.isCancelled == true
+            {
+                return
+            }
+        }
+        
+        let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
+        
+        Auth.auth().signIn(with: credential) { (result, error) in
+            if let error = error
+            {
+                return
+            }
+        }
+        
      }
      
      func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
