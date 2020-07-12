@@ -26,8 +26,18 @@ class ViewController: UIViewController, LoginButtonDelegate {
         
         fbLoginButton.delegate = self
         
+        fbLoginButton.frame = CGRect(x: view.frame.size.width / 2 - view.frame.size.width / 4, y: view.frame.size.height / 4, width: view.frame.size.width / 2 , height: 30)
         
+        fbLoginButton.permissions = ["public_profile,email"]
         
+        view.addSubview(fbLoginButton)
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        navigationController?.isNavigationBarHidden = true
     }
     
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
