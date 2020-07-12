@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+import FBSDKLoginKit
+import FacebookCore
+import FacebookLogin
+import Firebase
 
 class ViewController: UIViewController {
 
