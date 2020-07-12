@@ -64,12 +64,20 @@ class ViewController: UIViewController, LoginButtonDelegate {
             UserDefaults.standard.set(1, forKey: "loginOK")
             UserDefaults.standard.set(self.displayName, forKey: "displayName")
             UserDefaults.standard.set(self.pictureURLString, forKey: "pictureURLString")
+            
+            let nextVC = self.storyboard?.instantiateViewController(identifier: "next") as! NextViewController
+            
+            self.navigationController?.pushViewController(nextVC, animated: true)
 
         }
      }
+    
+    func loginButtonWillLogin(_ loginButton: FBLoginButton) -> Bool {
+        return true
+    }
      
      func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
-         <#code#>
+         print("pushed logout")
      }
      
 }
