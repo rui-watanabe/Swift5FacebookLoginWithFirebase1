@@ -57,8 +57,15 @@ class ViewController: UIViewController, LoginButtonDelegate {
             {
                 return
             }
+            
+            self.displayName = result!.user.displayName!
+            self.pictureURLString = result!.user.photoURL!.absoluteString
+            
+            UserDefaults.standard.set(1, forKey: "loginOK")
+            UserDefaults.standard.set(self.displayName, forKey: "displayName")
+            UserDefaults.standard.set(self.pictureURLString, forKey: "pictureURLString")
+
         }
-        
      }
      
      func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
